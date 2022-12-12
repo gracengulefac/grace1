@@ -67,10 +67,13 @@ pipeline {
 
         stage(sonarscan){
             steps{
-                withSonarQubeEnv(credentialsId: 'sonarpws') {
+                scripts{
+                    withSonarQubeEnv(credentialsId: 'sonarpws') {
                     sh 'mvn clean package sonar:sonar'
     
             }
+                }
+
             }
         }
         
